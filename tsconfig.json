@@ -35,5 +35,5 @@
 
     "types": ["jest"]
   },
-  "references": [{ "path": "./packages/schema" }, { "path": "./packages/foo" }]
+  "references": [{ "path": "./packages/foo" }]
 }

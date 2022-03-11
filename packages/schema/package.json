@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "JSON schema for the @udev tooling",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "udev.schema.json",
+  "types": "udev.d.ts",
   "module": "umd",
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
-    "clean": "rimraf dist/",
+    "build": "json2ts --input udev.schema.json --output udev.d.ts",
     "lint": "prettier --write src",
     "test": "jest"
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "^10.1.5"
   }
 }

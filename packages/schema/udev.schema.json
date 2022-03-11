@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://utori.dev/udev/udev.config.schema.json",
+  "title": "udev Configuration",
+  "description": "JSON schema for configuring the udev tooling",
+  "properties": {
+    "workspaces": {
+      "description": "Workspace definitions for the monorepo",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WorkspaceDefinition"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "$defs": {
+    "WorkspaceDefinition": {
+      "description": "Defines a workspace in a monorepo. If this is a string, it is expected to be the same as `pattern`",
+      "type": [
+        "object",
+        "string"
+      ],
+      "properties": {
+        "pattern": {
+          "description": "Pattern used to find the workspace package(s) in the monorepo",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pattern"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
