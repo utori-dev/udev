@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+
+    /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    "declaration": true,
+
+    /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+
+    "paths": {
+      "@utori-dev/template-typescript-monorepo-hello": ["packages/hello"],
+      "@utori-dev/template-typescript-monorepo-world": ["packages/world"]
+    },
+
+    /* Specify what module code is generated. This is intended to be usable by Node and browser projects. */
+    "module": "umd",
+
+    /* Specify how TypeScript looks up a file from a given module specifier. This is needed for UMD. */
+    "moduleResolution": "node",
+
+    "rootDir": ".",
+
+    "skipLibCheck": true,
+    "sourceMap": true,
+
+    /* Enable all strict type-checking options. */
+    "strict": true,
+
+    /* Set JS language version to be ES6, which is well-supported across browsers. */
+    "target": "es6",
+
+    "types": ["jest"]
+  },
+  "references": [{ "path": "./packages/hello" }, { "path": "./packages/world" }]
+}

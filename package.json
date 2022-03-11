@@ -1,0 +1,34 @@
+{
+  "name": "@utori-dev/template-typescript-monorepo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "description": "Template for a simple monorepo with types",
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "clean": "npm run clean --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "setup": "npm install && npm install --workspaces"
+  },
+  "workspaces": [
+    "packages/hello",
+    "packages/world"
+  ],
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.5.0",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utori-dev/template-simple-npm-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/utori-dev/template-typescript-monorepo/issues"
+  },
+  "homepage": "https://github.com/utori-dev/template-typescript-monorepo#readme"
+}

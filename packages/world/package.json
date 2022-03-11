@@ -1,0 +1,17 @@
+{
+  "name": "@utori-dev/template-typescript-monorepo-world",
+  "version": "1.0.0",
+  "description": "Example project in the template monorepo",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "umd",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf dist/",
+    "lint": "prettier --write src",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@utori-dev/template-typescript-monorepo-world": "*"
+  }
+}
