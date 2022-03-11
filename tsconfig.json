@@ -12,8 +12,8 @@
     "incremental": true,
 
     "paths": {
-      "@utori-dev/template-typescript-monorepo-hello": ["packages/hello"],
-      "@utori-dev/template-typescript-monorepo-world": ["packages/world"]
+      "@udev/foo": ["packages/foo"],
+      "@udev/schema": ["packages/schema"]
     },
 
     /* Specify what module code is generated. This is intended to be usable by Node and browser projects. */
@@ -35,5 +35,5 @@
 
     "types": ["jest"]
   },
-  "references": [{ "path": "./packages/hello" }, { "path": "./packages/world" }]
+  "references": [{ "path": "./packages/schema" }, { "path": "./packages/foo" }]
 }

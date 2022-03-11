@@ -1,19 +1,19 @@
 {
-  "name": "@utori-dev/template-typescript-monorepo",
+  "name": "@udev/root",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "description": "Template for a simple monorepo with types",
+  "description": "Small set of tools for developing within a monorepo",
   "scripts": {
-    "build": "npm run build --workspaces",
-    "clean": "npm run clean --workspaces",
-    "lint": "npm run lint --workspaces",
-    "test": "npm run test --workspaces",
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-resent",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
     "setup": "npm install && npm install --workspaces"
   },
   "workspaces": [
-    "packages/hello",
-    "packages/world"
+    "packages/foo",
+    "packages/schema"
   ],
   "devDependencies": {
     "@types/jest": "^27.4.0",
@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/utori-dev/template-simple-npm-library.git"
+    "url": "git+https://github.com/utori-dev/udev.git"
   },
   "bugs": {
-    "url": "https://github.com/utori-dev/template-typescript-monorepo/issues"
+    "url": "https://github.com/utori-dev/udev/issues"
   },
-  "homepage": "https://github.com/utori-dev/template-typescript-monorepo#readme"
+  "homepage": "https://github.com/utori-dev/udev#readme"
 }

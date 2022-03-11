@@ -1,7 +1,7 @@
 {
-  "name": "@utori-dev/template-typescript-monorepo-world",
+  "name": "@udev/foo",
   "version": "1.0.0",
-  "description": "Example project in the template monorepo",
+  "description": "Placeholder library",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "umd",
@@ -10,8 +10,5 @@
     "clean": "rimraf dist/",
     "lint": "prettier --write src",
     "test": "jest"
-  },
-  "dependencies": {
-    "@utori-dev/template-typescript-monorepo-world": "*"
   }
 }

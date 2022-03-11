@@ -1,15 +1,15 @@
-import greetWorld from './greetWorld';
+import logGreeting from './logGreeting';
 
-describe('greetWorld', () => {
+describe('logGreeting', () => {
   it('should log "Hello, World!"', () => {
     // Arrange
     const log = jest.spyOn(console, 'log');
 
     // Act
-    greetWorld();
+    logGreeting('foo');
 
     // Assert
-    expect(log).toHaveBeenCalledWith('Hello, World!');
+    expect(log).toHaveBeenCalledWith('Hello, foo!');
 
     // Teardown
     log.mockReset();
