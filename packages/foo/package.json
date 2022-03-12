@@ -1,8 +1,9 @@
 {
   "name": "@udev/foo",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Placeholder library",
   "license": "MIT",
+  "private": true,
   "main": "dist/index.js",
   "module": "umd",
   "scripts": {

@@ -6,13 +6,13 @@
   "description": "Small set of tools for developing within a monorepo",
   "scripts": {
     "build": "npm run build --workspaces --if-present",
-    "clean": "npm run clean --workspaces --if-resent",
+    "clean": "npm run clean --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "setup": "npm install && npm install --workspaces"
   },
   "workspaces": [
-    "packages/foo",
+    "packages/fs",
     "packages/schema"
   ],
   "devDependencies": {

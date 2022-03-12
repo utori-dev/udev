@@ -1,12 +1,14 @@
 {
   "name": "@udev/schema",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "JSON schema for the @udev tooling",
   "license": "MIT",
+  "private": true,
   "types": "dist/index.d.ts",
   "module": "umd",
   "scripts": {
     "build": "node scripts/build.js",
+    "clean": "rimraf dist/",
     "lint": "prettier --write src",
     "test": "jest"
   },

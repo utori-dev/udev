@@ -1,0 +1,19 @@
+{
+  "name": "@udev/fs",
+  "version": "0.1.0",
+  "description": "Extension of NodeJS `fs` and `path` tools.",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "module": "commonjs",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf dist/ && rimraf .cache/",
+    "lint": "prettier --write src",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

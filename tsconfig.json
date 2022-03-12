@@ -12,7 +12,7 @@
     "incremental": true,
 
     "paths": {
-      "@udev/foo": ["packages/foo"],
+      "@udev/fs": ["packages/fs"],
       "@udev/schema": ["packages/schema"]
     },
 
@@ -35,5 +35,5 @@
 
     "types": ["jest"]
   },
-  "references": [{ "path": "./packages/foo" }]
+  "references": [{ "path": "./packages/fs" }]
 }
