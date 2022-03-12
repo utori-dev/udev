@@ -1,62 +1,121 @@
-# `@utori-dev/template-typescript-monorepo`
+# `@udev` Tools
 
-This is a template for a simple NPM monorepo that includes TypeScript projects.
+## `udev` CLI
 
-This monorepo includes basic configurations for [Prettier](prettier), [Jest](jest), and [TypeScript][typescript].
+The primary package of this monorepo will be the `udev` CLI tool.
+This tool will help manage a vanilla NPM monorepo.
 
-## Getting Started
+| Command               | Description                                             | Libraries                            |
+| --------------------- | ------------------------------------------------------- | ------------------------------------ |
+| `audit dependencies`  | Audit dependencies.                                     |                                      |
+| `audit docs`          | Audit links and spelling in markdown files.             | `@udev/markdown`                     |
+| `audit licenses`      | Audit license files.                                    | `@udev/license-util`                 |
+| `format config`       | Format order of properties in JSON configuration files. |                                      |
+| `format docs`         | Format markdown files within the monorepo.              | `@udev/markdown`                     |
+| `generate <template>` | Generate new packages and code from templates.          | `@udev/generator`                    |
+| `goodbye`             | Remove `udev.*.json` files from the monorepo.           |                                      |
+| `init`                | Initialize `udev.*.json` files and add `udev`.          |                                      |
+| `nuke all`            | Remove all untracked files for a fresh state.           | `@udev/local`                        |
+| `nuke cache`          | Clear the local cache.                                  | `@udev/cache`                        |
+| `publish`             | Publish packages.                                       | `@udev/publisher`                    |
+| `run <script-name>`   | Run NPM scripts or configured commands with caching.    | `@udev/cache`, `@udev/script-runner` |
+| `ui`                  | Start app for managing the monorepo.                    | `@udev/ui`                           |
+| `symlink`             | Create a symbolic link.                                 | `@udev/symlinker`                    |
+| `update config`       | Update package configuration files.                     |                                      |
+| `update dependencies` | Update dependency versions.                             |                                      |
+| `update docs --links` | Add missing link references to any markdown files.      | `@udev/markdown`                     |
+| `update licenses`     | Update license files for packages in the monorepo.      | `@udev/license-util`                 |
+| `update scripts`      | Update package scripts.                                 |                                      |
+| `update types`        | Update paths and references in base `tsconfig.json`.    |                                      |
+| `update versions`     | Update package versions throughout a monorepo.          |                                      |
+| `update workspaces`   | Update order of workspaces in root `package.json`.      |                                      |
+| `validate cache`      | Validate local cache state.                             | `@udev/cache`                        |
+| `validate config`     | Validate configurations within a monorepo.              |                                      |
+| `validate dictionary` | Validate dictionary configurations.                     | `@udev/dictionary`                   |
 
-1. Clone the [template repository on GitHub][git_repo].\
-   **Note**: If you are unsure on how to do this, see the
-   [GitHub docs on creating repositories from templates][github_docs_template].
-1. Update the following properties in `package.json`:
-   - `name`: Update to your library's name.
-   - `description`: Update to a description of your library.
-   - `repository.url`: Update to your GitHub repository.
-   - `bugs.url`: Update to your GitHub repository.
-   - `homepage`: Update to your project's homepage.
-   - `workspaces`: Replace with your workspaces.
-1. Update `README.md` to describe your library.
-1. Update `LICENSE` to be appropriate for your project.
-1. Replace the stupid `hello` and `world` projects in `packages/` (unless you really want them?)
-1. Update `.prettierrc.yaml`, `jest.config.json`, and `tsconfig.json` as desired.\
-   See the information below on configuring these tools.
+All commands will use the `@udev/config`, `@udev/fs`, `@udev/logger`, and `@udev/monorepo-loader` tools.
 
-## Configuration
+This tool will be designed to be removable.
+What does this mean?
 
-### Prettier (`.prettierrc.yaml`)
+The only differences between a `@udev` monorepo and a vanilla NPM monorepo will be:
 
-This project includes a `.prettierrc.yaml` configuration for [Prettier][prettier].
-You may not need to modify this at all.
+- A `devDependency` to `@udev/cli` in the root package.
+- A `udev.monorepo.json` in the root directory.
+- Directory (or directories) of generators containing templates. These will contain `udev.generator.json` files.
+- Potentially some `udev.package.json` in individual packages.
 
-See the [documentation for configuring Prettier][prettier_docs_config].
+If the `goodbye` command is executed, the monorepo should still work as before.
+This gives the user flexibility to migrate away from `@udev/cli` if they ever feel the need to do so.
+This will also make it easier for users to add `@udev/cli` to a monorepo.
 
-### Jest (`jest.config.json`)
+## Libraries
 
-This project includes a starter `jest.config.json` configuration for [Jest][jest].
+Priorities are graded from `A+` to `D-`. Packages with the priority `Stretch` are considered stretch goals.
 
-You will probably want to configure this to include the appropriate [`testEnvironment`][jest_docs_config_test_environment].
+| Name                      | Description                                           | Priority | Dependencies                                              |
+| ------------------------- | ----------------------------------------------------- | -------- | --------------------------------------------------------- |
+| `@udev/cache`             | Handle caching.                                       | C-       | `@udev/fs`, `@udev/schema-cache`, `@udev/validate-schema` |
+| `@udev/config`            | Read and write configuration files.                   | A        | `@udev/fs`, `@udev/schema`                                |
+| `@udev/dictonary`         | Access dictionaries for localized strings.            | B        | `@udev/fs`, `@udev/schema-dictionary`                     |
+| `@udev/flags`             | Utilities for feature flagging.                       | Stretch  |                                                           |
+| `@udev/fs`                | Extension of NodeJS `fs` and `path` tools.            | A+       |                                                           |
+| `@udev/generator`         | Generate files from templates.                        | A+       | `@udev/fs`, `@udev/templates`                             |
+| `@udev/ui`                | UI for managing the monorepo.                         | B-       | `@udev/config`, `@udev/monorepo-loader`                   |
+| `@udev/license-util`      | Utilities for managing package licenses.              | Stretch  | `@udev/fs`                                                |
+| `@udev/local`             | Get information on the local system.                  | D-       | `@udev/fs`                                                |
+| `@udev/logger`            | Handle logging.                                       | B        |                                                           |
+| `@udev/markdown`          | Utilities for processing Markdown files.              | C+       |                                                           |
+| `@udev/monorepo-loader`   | Load a monorepo's workspaces and dependencies.        | A+       | `@udev/config`, `@udev/fs`, `@udev/schema-monorepo`       |
+| `@udev/publisher`         | Publish NPM packages.                                 | C+       | `@udev/fs`                                                |
+| `@udev/schema-cache`      | Schema for cache details.                             | C-       |                                                           |
+| `@udev/schema-dictionary` | Schema for localized dictionaries.                    | B        |                                                           |
+| `@udev/schema-generator`  | Schema to represent a generator configuration.        | A+       |                                                           |
+| `@udev/schema-monorepo`   | Schema to represent a monorepo workspace.             | B        |                                                           |
+| `@udev/schema`            | The schema for all `udev.*.json` files.               | A+       |                                                           |
+| `@udev/script-runner`     | Run scripts and commands using the repository `.bin`. | B        | `@udev/config`, `@udev/fs`                                |
+| `@udev/symlinker`         | Create symbolic links.                                | D        | `@udev/fs`                                                |
+| `@udev/templates`         | Process templates. (wrapper)                          | A        |                                                           |
 
-See the [documentation for configuring Jest][jest_docs_config].
+### `@udev/config`
 
-### TypeScript (`tsconfig.json`)
+Read and write `udev.*.json` configurations.
 
-This project includes a starter `tsconfig.json` configuration for [TypeScript][typescript].
-You can [read more about what a `tsconfig.json` file in the TypeScript handbook][typescript_docs_config].
+Other configurations may also be supported.
+Possible configurations include:
 
-You will probably want to configure the `tsconfig.json` to include the appropriate [`lib`][typescript_ref_config_lib] values.
+- TypeScript configs
+- Jest configs
+- Prettier configs
+- ESLint configs
+- `package.json` files
+- Webpack configs
 
-For other values, see the [official `tsconfig.json` reference][typescript_ref_config].
+### `@udev/dictionary`
 
-[git_repo]: https://github.com/utori-dev/template-typescript-monorepo
-[github_docs_template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-[jest]: https://jestjs.io/
-[jest_docs_config]: https://jestjs.io/docs/configuration
-[jest_docs_config_test_environment]: https://jestjs.io/docs/configuration#testenvironment-string
-[npmjs]: https://www.npmjs.com/
-[prettier]: https://prettier.io/
-[prettier_docs_config]: https://prettier.io/docs/en/configuration.html
-[typescript]: https://www.typescriptlang.org/
-[typescript_docs_config]: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
-[typescript_ref_config]: https://www.typescriptlang.org/tsconfig
-[typescript_ref_config_lib]: https://www.typescriptlang.org/tsconfig#lib
+Access localized strings from a dictionary for user messages.
+
+### `@udev/ui`
+
+Web app for managing the monorepo.
+
+Will include the following features:
+
+- Graph of dependencies
+- Editing of configuration settings
+- Executing commands
+
+### `@udev/fs`
+
+Extension of NodeJs `fs`.
+
+Includes support for globs, reading JSON files, and (maybe) validating schemas.
+
+### `@udev/monorepo-loader`
+
+Loads the monorepo so that it can be easily analyzed.
+
+### `@udev/schema`
+
+This package will contain schema for `udev.monorepo.json`, `udev.generator.json`,
+`udev.package.json`, and any other `udev.*.json` files.
