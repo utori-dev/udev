@@ -1,3 +1,6 @@
+## Build Outputs
+dist/
+
 # Logs
 logs
 *.log

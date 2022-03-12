@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "JSON schema for the @udev tooling",
   "license": "MIT",
-  "main": "udev.schema.json",
-  "types": "udev.d.ts",
+  "types": "dist/index.d.ts",
   "module": "umd",
   "scripts": {
-    "build": "json2ts --input udev.schema.json --output udev.d.ts",
+    "build": "node scripts/build.js",
     "lint": "prettier --write src",
     "test": "jest"
   },

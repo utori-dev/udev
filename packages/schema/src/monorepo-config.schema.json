@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "https://utori.dev/udev/udev.config.schema.json",
-  "title": "udev Configuration",
-  "description": "JSON schema for configuring the udev tooling",
+  "$id": "https://utori.dev/udev/monorepo-config.schema.json",
+  "title": "MonorepoConfig",
+  "description": "Configuration for a monorepo",
   "properties": {
     "workspaces": {
       "description": "Workspace definitions for the monorepo",
