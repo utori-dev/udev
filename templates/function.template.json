@@ -1,0 +1,8 @@
+{
+  "$schema": "../packages/schema/src/template.schema.json",
+  "name": "function",
+  "placeholders": {
+    "name": "placeholder-name"
+  },
+  "directory": "function/"
+}

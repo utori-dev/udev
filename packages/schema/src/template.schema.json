@@ -4,14 +4,9 @@
   "title": "Template",
   "description": "Describes configuration for a generator template",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "name": {
       "description": "Name of the template",
-      "type": "string"
-    },
-    "path": {
-      "description": "Absolute file path to the template configuration",
       "type": "string"
     },
     "placeholders": {
@@ -30,28 +25,21 @@
       ]
     },
     "defaultValues": {
-      "description": "Default properties used for the generated files",
+      "description": "Default values used for the generated files",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/$defs/TemplateDefaultValue"
+        "$ref": "#/$defs/TemplateValue"
       }
     },
-    "files": {
-      "description": "Files to include in the template. This can be globs or paths. Globs and paths will be interpreted as relative to the template config file.",
-      "type": [
-        "string",
-        "array"
-      ],
-      "items": {
-        "type": "string"
-      }
+    "directory": {
+      "description": "Relative path to the directory of template files.",
+      "type": "string"
     }
   },
   "required": [
     "name",
-    "path",
     "placeholders",
-    "files"
+    "directory"
   ],
   "$defs": {
     "TemplatePlaceholder": {
@@ -96,21 +84,18 @@
         "passthrough"
       ]
     },
-    "TemplateDefaultValue": {
-      "description": "Default value used for the generated files",
+    "TemplateValue": {
+      "description": "Value used for the generated files",
       "type": [
-        "array",
         "string",
         "boolean",
-        "object",
-        "number",
-        "null"
+        "number"
       ],
       "additionalProperties": {
-        "$ref": "#/$defs/TemplateDefaultValue"
+        "$ref": "#/$defs/TemplateValue"
       },
       "items": {
-        "$ref": "#/$defs/TemplateDefaultValue"
+        "$ref": "#/$defs/TemplateValue"
       }
     }
   }

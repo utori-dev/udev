@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@udev/fs": "*",
+    "@udev/schema": "*",
     "liquidjs": "^9.36.0",
     "lodash": "^4.17.21"
   },

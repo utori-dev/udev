@@ -4,7 +4,6 @@
   "title": "Generator",
   "description": "Configuration for a generator",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "templates": {
       "description": "Templates that can be generated. These should be relative paths to the template configurations.",

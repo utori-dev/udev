@@ -4,7 +4,6 @@
   "title": "Monorepo",
   "description": "Configuration for a monorepo",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "workspaces": {
       "description": "Workspace definitions for the monorepo",

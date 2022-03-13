@@ -28,23 +28,18 @@ const schemas = fs.readdirSync(src, { withFileTypes: true }).map((item) => {
 
   const schema = item.name;
   const source = path.join(src, schema);
-  const definition = schema.replace(schemaFileEnding, '.d.ts');
-  const output = path.join(dist, definition);
 
-  return { schema, source, definition, output };
+  return { schema, source };
 });
 
 if (!fs.existsSync(dist)) fs.mkdirSync(dist);
 
-schemas.forEach(({ source, output, definition, schema }) =>
-  compileFromFile(source).then((typescript) => {
-    fs.writeFileSync(output, typescript);
-    console.log(`Created '${definition}' from '${schema}'`);
-  })
-);
-
-// Write the entry file for the type definitions.
-fs.writeFileSync(
-  path.join(dist, 'index.d.ts'),
-  schemas.map(({ definition }) => `export * from './${definition}';`).join('\n')
+// Load all of the schema type definitions so we can combine them into one file.
+Promise.all(schemas.map(({ source }) => compileFromFile(source, { bannerComment: '', cwd: src }))).then(
+  // We'll want to combine all of the schema definitions together and write to the types entry file.
+  (definitions) => {
+    // Write the entry file for the type definitions.
+    const entry = path.join(dist, 'index.d.ts');
+    fs.writeFileSync(entry, definitions.join('\n'));
+  }
 );

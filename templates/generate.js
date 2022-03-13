@@ -49,10 +49,10 @@ require('yargs')
         throw new Error(`Cannot resolve package '${package}' because '${packageDirectory}' does not exist.`);
       }
 
-      const template = path.join(__dirname, 'function');
+      const template = path.join(__dirname, 'function.template.json');
       const output = path.join(packageDirectory, functionPath);
 
-      generateFiles({ template, output, scope: { name, description } });
+      generateFiles({ template, output, values: { name, description } });
     }
   )
   .command(
@@ -76,9 +76,9 @@ require('yargs')
     },
     (args) => {
       const { name, description } = args;
-      const template = path.join(__dirname, 'package');
+      const template = path.join(__dirname, 'package.template.json');
       const output = path.join(path.dirname(__dirname), 'packages', kebabCase(name));
-      generateFiles({ template, output, scope: { name, description } });
+      generateFiles({ template, output, values: { name, description } });
     }
   )
   .help()

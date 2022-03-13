@@ -1,36 +1,84 @@
-export type TemplateScope = {
-  name: string;
+import { TemplateValue, TemplatePlaceholder } from '@udev/schema';
 
-  [key: string]: unknown;
+export type TemplateValues = {
+  name: string;
+  [key: string]: TemplateValue;
 };
 
-export type Template = {
+export type LoadedTemplateFile = {
+  /**
+   * Name of the template file. This will be used to generate the rendered file name.
+   */
   name: string;
 
+  /**
+   * Absolute path to the template file.
+   */
   path: string;
 
+  /**
+   * Contents of the template file. This will be used to generate the rendered file data.
+   */
   data: string;
 };
 
-export type TemplatePlaceholderName = {
-  kebabCase: string;
-  camelCase: string;
-  pascalCase: string;
-  snakeCase: string;
-  upperSnakeCase: string;
-};
+export type LoadedTemplatePlaceholder = Exclude<TemplatePlaceholder, string>;
 
-export type TemplateCollection = {
+export type LoadedTemplate = {
+  /**
+   * Name of the template
+   */
+  name: string;
+
+  /**
+   * Absolute file path to the template configuration
+   */
   path: string;
 
-  placeholderName: TemplatePlaceholderName;
+  /**
+   * Placeholder values used in templates. These will be replace with values passed to the generator.
+   */
+  placeholders: {
+    name: LoadedTemplatePlaceholder;
+    [k: string]: LoadedTemplatePlaceholder;
+  };
 
-  templates: Template[];
+  /**
+   * Default properties used for the generated files
+   */
+  defaultValues: Partial<TemplateValues>;
+
+  /**
+   * Files that are a part of the template.
+   */
+  files: LoadedTemplateFile[];
 };
 
-export type RenderedTemplate<SCOPE extends TemplateScope = TemplateScope> = {
-  template: Template;
+export type RenderedFile = {
+  /**
+   * Template file used to render the file.
+   */
+  templateFile: LoadedTemplateFile;
+
+  /**
+   * Name of the rendered file.
+   */
   name: string;
+
+  /**
+   * Contents of the rendered file.
+   */
   data: string;
-  scope: SCOPE;
+};
+
+export type RenderedTemplate = {
+  /**
+   * Rendered files in the template.
+   */
+  files: RenderedFile[];
+
+  /**
+   * Values used to render the files.
+   */
+  values: TemplateValues;
 };

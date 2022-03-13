@@ -1,0 +1,8 @@
+{
+  "$schema": "../packages/schema/src/template.schema.json",
+  "name": "package",
+  "placeholders": {
+    "name": "placeholder-name"
+  },
+  "directory": "package/"
+}

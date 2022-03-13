@@ -1,21 +1,21 @@
 import * as path from 'path';
 import { writeFileSync } from '@udev/fs';
 
-import loadTemplateCollection from './loadTemplateCollection';
-import renderTemplateCollection from './renderTemplateCollection';
-import { RenderedTemplate, TemplateScope } from './types';
+import loadTemplate from './loadTemplate';
+import renderTemplate from './renderTemplate';
+import { RenderedFile, TemplateValues } from './types';
 
 export type GenerateFileOptions = {
   template: string;
   output: string;
-  scope: TemplateScope;
+  values: TemplateValues;
 };
 
 function generateFiles(options: GenerateFileOptions): void {
-  const { template: templateDirectory, output, scope } = options;
-  const templates = loadTemplateCollection(templateDirectory);
+  const { template: templateDirectory, output, values } = options;
+  const templates = loadTemplate(templateDirectory);
 
-  renderTemplateCollection(templates, scope).then((renderedTemplates: RenderedTemplate[]) => {
+  renderTemplate(templates, values).then((renderedTemplates: RenderedFile[]) => {
     renderedTemplates.forEach((rendered) => {
       const filePath = path.join(output, rendered.name);
       writeFileSync(filePath, rendered.data);
