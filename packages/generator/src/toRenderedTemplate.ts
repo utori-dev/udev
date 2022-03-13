@@ -10,19 +10,19 @@ type ToRenderedTemplateOptions<SCOPE extends TemplateScope = TemplateScope> = {
 
 /**
  *
- * @param templateName
+ * @param value
  * @param renderName
  * @param placeholderName
  * @returns
  */
-function toRenderedTemplateName(
-  templateName: string,
+function replaceTemplatePlaceholderName(
+  value: string,
   renderName: string,
   placeholderName: TemplatePlaceholderName
 ): string {
   const { camelCase, kebabCase, snakeCase, pascalCase, upperSnakeCase } = toTemplatePlaceholderName(renderName);
 
-  return templateName
+  return value
     .split(placeholderName.camelCase)
     .join(camelCase)
     .split(placeholderName.kebabCase)
@@ -41,8 +41,8 @@ function toRenderedTemplate<SCOPE extends TemplateScope = TemplateScope>(
   const { placeholderName, scope, template, data } = options;
 
   return {
-    data,
-    name: toRenderedTemplateName(template.name, scope.name, placeholderName),
+    data: replaceTemplatePlaceholderName(data, scope.name, placeholderName),
+    name: replaceTemplatePlaceholderName(template.name, scope.name, placeholderName),
     scope,
     template,
   };

@@ -1,7 +1,7 @@
 {
-  "name": "@udev/{{ name }}",
+  "name": "@udev/placeholder-name",
   "version": "0.1.0",
-  "description": "{{ name }}",
+  "description": "{{ description }}",
   "license": "MIT",
   "private": true,
   "main": "dist/index.js",

@@ -1,5 +1,5 @@
 [Back to main README](../../README.md)
 
-# `@udev/{{ name }}`
+# `@udev/placeholder-name`
 
 {{ description }}

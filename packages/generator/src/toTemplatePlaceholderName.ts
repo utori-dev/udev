@@ -1,5 +1,11 @@
 import { TemplatePlaceholderName } from './types';
-import { camelCase as toCamelCase, snakeCase as toSnakeCase, kebabCase as toKebabCase, capitalize } from 'lodash';
+import {
+  camelCase as toCamelCase,
+  capitalize,
+  kebabCase as toKebabCase,
+  snakeCase as toSnakeCase,
+  words as toWords,
+} from 'lodash';
 
 function toTemplatePlaceholderName(
   placeholderName: string | TemplatePlaceholderName = 'placeholder-name'
@@ -8,7 +14,7 @@ function toTemplatePlaceholderName(
 
   const camelCase = toCamelCase(placeholderName);
   const kebabCase = toKebabCase(placeholderName);
-  const pascalCase = capitalize(camelCase);
+  const pascalCase = toWords(placeholderName).map(capitalize).join('');
   const snakeCase = toSnakeCase(placeholderName);
   const upperSnakeCase = snakeCase.toUpperCase();
 
