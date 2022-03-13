@@ -8,6 +8,7 @@
     "build": "npm run build --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
+    "generate": "node templates/generate.js",
     "test": "npm run test --workspaces --if-present",
     "setup": "npm install && npm install --workspaces"
   },
@@ -18,6 +19,7 @@
   ],
   "devDependencies": {
     "@types/jest": "^27.4.0",
+    "@udev/generator": "*",
     "jest": "^27.5.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",

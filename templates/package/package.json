@@ -1,10 +1,11 @@
 {
-  "name": "@udev/foo",
+  "name": "@udev/{{ name }}",
   "version": "0.1.0",
-  "description": "Placeholder library",
+  "description": "{{ name }}",
   "license": "MIT",
   "private": true,
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "module": "umd",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
