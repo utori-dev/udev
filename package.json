@@ -14,8 +14,11 @@
   },
   "workspaces": [
     "packages/fs",
+    "packages/generator",
     "packages/schema",
-    "packages/generator"
+    "package/config",
+    "package/monorepo-loader",
+    "packages/cli"
   ],
   "devDependencies": {
     "@types/jest": "^27.4.0",

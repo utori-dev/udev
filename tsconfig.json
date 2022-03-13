@@ -13,8 +13,11 @@
 
     "paths": {
       "@udev/fs": ["packages/fs"],
+      "@udev/generator": ["packages/generator"],
       "@udev/schema": ["packages/schema"],
-      "@udev/generator": ["packages/generator"]
+      "@udev/config": ["packages/config"],
+      "@udev/monorepo-loader": ["packages/monorepo-loader"],
+      "@udev/cli": ["packages/cli"]
     },
 
     /* Specify what module code is generated. This is intended to be usable by Node and browser projects. */
@@ -36,5 +39,11 @@
 
     "types": ["jest"]
   },
-  "references": [{ "path": "./packages/fs" }, { "path": "./packages/generator" }]
+  "references": [
+    { "path": "./packages/fs" },
+    { "path": "./packages/generator" },
+    { "path": "./packages/config" },
+    { "path": "./packages/monorepo-loader" },
+    { "path": "./packages/cli" }
+  ]
 }
