@@ -2,6 +2,38 @@
   "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://utori.dev/udev/monorepo.schema.json",
   "title": "Monorepo",
-  "description": "Object to represent a monorepo",
-  "type": "object"
+  "description": "Configuration for a monorepo",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "workspaces": {
+      "description": "Workspace definitions for the monorepo",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MonorepoWorkspace"
+      }
+    }
+  },
+  "required": [
+    "workspaces"
+  ],
+  "$defs": {
+    "MonorepoWorkspace": {
+      "description": "Defines a workspace in a monorepo. If this is a string, it is expected to be the same as `glob`",
+      "type": [
+        "object",
+        "string"
+      ],
+      "properties": {
+        "glob": {
+          "description": "Glob used to find the workspace package(s) in the monorepo",
+          "type": "string"
+        }
+      },
+      "required": [
+        "glob"
+      ],
+      "additionalProperties": false
+    }
+  }
 }

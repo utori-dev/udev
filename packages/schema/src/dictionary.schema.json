@@ -3,5 +3,6 @@
   "$id": "https://utori.dev/udev/dictionary.schema.json",
   "title": "Dictionary",
   "description": "Dictionary containing localized strings",
-  "type": "object"
+  "type": "object",
+  "additionalProperties": false
 }

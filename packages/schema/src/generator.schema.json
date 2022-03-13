@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://utori.dev/udev/generator.schema.json",
+  "title": "Generator",
+  "description": "Configuration for a generator",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "templates": {
+      "description": "Templates that can be generated. These should be relative paths to the template configurations.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

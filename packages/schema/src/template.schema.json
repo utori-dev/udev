@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://utori.dev/udev/template.schema.json",
+  "title": "Template",
+  "description": "Describes configuration for a generator template",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Name of the template",
+      "type": "string"
+    },
+    "path": {
+      "description": "Absolute file path to the template configuration",
+      "type": "string"
+    },
+    "placeholders": {
+      "description": "Placeholder values used in templates. These will be replace with values passed to the generator.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/TemplatePlaceholder"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/TemplatePlaceholder"
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "defaultValues": {
+      "description": "Default properties used for the generated files",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/TemplateDefaultValue"
+      }
+    },
+    "files": {
+      "description": "Files to include in the template. This can be globs or paths. Globs and paths will be interpreted as relative to the template config file.",
+      "type": [
+        "string",
+        "array"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "path",
+    "placeholders",
+    "files"
+  ],
+  "$defs": {
+    "TemplatePlaceholder": {
+      "description": "Value used as a placeholder value in generator files. If this is a string, the other values will be generated automatically.",
+      "type": [
+        "object",
+        "string"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kebabCase": {
+          "description": "Placeholder value in `kebab-case`. This will be replaced with a `kebab-case` version of the value passed to the generator.",
+          "type": "string"
+        },
+        "camelCase": {
+          "description": "Placeholder value in `camelCase`. This will be replaced with a `camelCase` version of the value passed to the generator.",
+          "type": "string"
+        },
+        "pascalCase": {
+          "description": "Placeholder value in `PascalCase`. This will be replaced with a `PascalCase` version of the value passed to the generator.",
+          "type": "string"
+        },
+        "snakeCase": {
+          "description": "Placeholder value in `snake_case`. This will be replaced with a `snake_case` version of the value passed to the generator.",
+          "type": "string"
+        },
+        "upperSnakeCase": {
+          "description": "Placeholder value in `UPPER_SNAKE_CASE`. This will be replaced with an `UPPER_SNAKE_CASE` version of the value passed to the generator.",
+          "type": "string"
+        },
+        "passthrough": {
+          "description": "Placeholder value used to specify that the value passed to the generator should be used as is.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kebabCase",
+        "camelCase",
+        "pascalCase",
+        "snakeCase",
+        "upperSnakeCase",
+        "passthrough"
+      ]
+    },
+    "TemplateDefaultValue": {
+      "description": "Default value used for the generated files",
+      "type": [
+        "array",
+        "string",
+        "boolean",
+        "object",
+        "number",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/TemplateDefaultValue"
+      },
+      "items": {
+        "$ref": "#/$defs/TemplateDefaultValue"
+      }
+    }
+  }
+}

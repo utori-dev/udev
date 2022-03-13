@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "https://utori.dev/udev/generator-config.schema.json",
-  "title": "GeneratorConfig",
-  "description": "Configuration for a generator",
-  "type": "object"
-}
