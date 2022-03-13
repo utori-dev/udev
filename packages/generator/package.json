@@ -1,0 +1,24 @@
+{
+  "name": "@udev/generator",
+  "version": "0.1.0",
+  "description": "Generate files from templates.",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "umd",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf dist/ && rimraf .cache/",
+    "lint": "prettier --write src",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@udev/fs": "*",
+    "liquidjs": "^9.36.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

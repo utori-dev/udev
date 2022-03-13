@@ -13,16 +13,16 @@ jest.mock('fs', () => ({
 }));
 
 describe('readJsonSync', () => {
-  it('should return defaultJson if file does not exist', () => {
+  it('should return defaultData if file does not exist', () => {
     // Arrange
     mockFS.existsSync.mockImplementation(() => false);
-    const defaultJson: any = {};
+    const defaultData: any = {};
 
     // Act
-    const result = readJsonSync('foo.json', { defaultJson });
+    const result = readJsonSync('foo.json', { defaultData });
 
     // Assert
-    expect(result).toBe(defaultJson);
+    expect(result).toBe(defaultData);
   });
 
   it('should let readFileSync throw error if file does not exist', () => {

@@ -13,7 +13,8 @@
 
     "paths": {
       "@udev/fs": ["packages/fs"],
-      "@udev/schema": ["packages/schema"]
+      "@udev/schema": ["packages/schema"],
+      "@udev/generator": ["packages/generator"]
     },
 
     /* Specify what module code is generated. This is intended to be usable by Node and browser projects. */
@@ -35,5 +36,5 @@
 
     "types": ["jest"]
   },
-  "references": [{ "path": "./packages/fs" }]
+  "references": [{ "path": "./packages/fs" }, { "path": "./packages/generator" }]
 }

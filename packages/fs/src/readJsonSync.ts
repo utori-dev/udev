@@ -26,7 +26,7 @@ export type ReadJsonSyncOptions<T extends object = object> = {
    *
    * If this is not provided and the file does not exist, an error will be thrown.
    */
-  defaultJson?: T;
+  defaultData?: T;
 
   /**
    * Encoding for the JSON file.
@@ -69,11 +69,11 @@ export type ReadJsonSyncOptions<T extends object = object> = {
  * @param options
  */
 function readJsonSync<T extends object = object>(pathLike: fs.PathLike, options: ReadJsonSyncOptions<T> = {}): T {
-  const { defaultJson, validate: isValid, encoding = 'utf8', flag, normalizer = normalizeRawJson, reviver } = options;
+  const { defaultData, validate: isValid, encoding = 'utf8', flag, normalizer = normalizeRawJson, reviver } = options;
 
-  // If the path doesn't exist, we'll return the defaultJson if provided.
+  // If the path doesn't exist, we'll return the defaultData if provided.
   // Otherwise, we'll let the standard read file error be thrown.
-  if (!fs.existsSync(pathLike) && defaultJson) return defaultJson;
+  if (!fs.existsSync(pathLike) && defaultData) return defaultData;
 
   const raw = fs.readFileSync(pathLike, { encoding, flag });
   const normalized = normalizer(raw);

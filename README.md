@@ -60,18 +60,17 @@ Priorities are graded from `A+` to `D-`. Packages with the priority `Stretch` ar
 | `@udev/dictonary`       | Access dictionaries for localized strings.            | B        | `@udev/fs`, `@udev/schema`                          |
 | `@udev/flags`           | Utilities for feature flagging.                       | Stretch  |                                                     |
 | `@udev/fs`              | Extension of NodeJS `fs` and `path` tools.            | A+       |                                                     |
-| `@udev/generator`       | Generate files from templates.                        | A+       | `@udev/fs`, `@udev/templates`                       |
-| `@udev/ui`              | UI for managing the monorepo.                         | B-       | `@udev/config`, `@udev/monorepo-loader`             |
+| `@udev/generator`       | Generate files from templates.                        | A+       | `@udev/fs`                                          |
 | `@udev/license-util`    | Utilities for managing package licenses.              | Stretch  | `@udev/fs`                                          |
 | `@udev/local`           | Get information on the local system.                  | D-       | `@udev/fs`                                          |
 | `@udev/logger`          | Handle logging.                                       | B        |                                                     |
 | `@udev/markdown`        | Utilities for processing Markdown files.              | C+       |                                                     |
-| `@udev/monorepo-loader` | Load a monorepo's workspaces and dependencies.        | A+       | `@udev/config`, `@udev/fs`, `@udev/schema`          |
+| `@udev/monorepo-loader` | Load a monorepo's workspaces and dependencies.        | A        | `@udev/config`, `@udev/fs`, `@udev/schema`          |
 | `@udev/publisher`       | Publish NPM packages.                                 | C+       | `@udev/fs`                                          |
 | `@udev/schema`          | The schema for all `udev.*.json` files.               | A+       |                                                     |
 | `@udev/script-runner`   | Run scripts and commands using the repository `.bin`. | B        | `@udev/config`, `@udev/fs`                          |
 | `@udev/symlinker`       | Create symbolic links.                                | D        | `@udev/fs`                                          |
-| `@udev/templates`       | Process templates. (wrapper)                          | A        |                                                     |
+| `@udev/ui`              | UI for managing the monorepo.                         | B-       | `@udev/config`, `@udev/monorepo-loader`             |
 
 ### `@udev/config`
 

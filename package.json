@@ -13,7 +13,8 @@
   },
   "workspaces": [
     "packages/fs",
-    "packages/schema"
+    "packages/schema",
+    "packages/generator"
   ],
   "devDependencies": {
     "@types/jest": "^27.4.0",
