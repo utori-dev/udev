@@ -13,6 +13,7 @@
 
     "paths": {
       "@udev/fs": ["packages/fs"],
+      "@udev/template-loader": ["packages/template-loader"],
       "@udev/generator": ["packages/generator"],
       "@udev/schema": ["packages/schema"],
       "@udev/config": ["packages/config"],
@@ -38,12 +39,5 @@
     "target": "es6",
 
     "types": ["jest"]
-  },
-  "references": [
-    { "path": "./packages/fs" },
-    { "path": "./packages/generator" },
-    { "path": "./packages/config" },
-    { "path": "./packages/monorepo-loader" },
-    { "path": "./packages/cli" }
-  ]
+  }
 }

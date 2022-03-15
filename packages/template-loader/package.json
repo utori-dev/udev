@@ -1,0 +1,16 @@
+{
+  "name": "@udev/template-loader",
+  "version": "0.1.0",
+  "description": "Auto-generated @udev tool",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "umd",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf dist/",
+    "lint": "prettier --write src",
+    "test": "jest"
+  }
+}

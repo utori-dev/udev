@@ -35,7 +35,7 @@ function toRenderedFile(options: ToRenderedFileOptions): RenderedFile {
   const { templateFile, values, template, data } = options;
 
   const rendered: RenderedFile = {
-    name: template.name,
+    name: templateFile.name,
     data,
     templateFile,
   };

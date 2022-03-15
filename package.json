@@ -14,6 +14,7 @@
   },
   "workspaces": [
     "packages/fs",
+    "package/template-loader",
     "packages/generator",
     "packages/schema",
     "package/config",
