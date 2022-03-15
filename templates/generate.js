@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { kebabCase } = require('lodash');
-const { generateFiles } = require('@udev/generator');
+const { generateLiquidTemplate } = require('@udev/generator');
 
 require('yargs')
   .scriptName('generate')
@@ -52,7 +52,7 @@ require('yargs')
       const template = path.join(__dirname, 'function.template.json');
       const output = path.join(packageDirectory, functionPath);
 
-      generateFiles({ template, output, values: { name, description } });
+      generateLiquidTemplate({ template, output, values: { name, description } });
     }
   )
   .command(
@@ -78,7 +78,7 @@ require('yargs')
       const { name, description } = args;
       const template = path.join(__dirname, 'package.template.json');
       const output = path.join(path.dirname(__dirname), 'packages', kebabCase(name));
-      generateFiles({ template, output, values: { name, description } });
+      generateLiquidTemplate({ template, output, values: { name, description } });
     }
   )
   .help()

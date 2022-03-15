@@ -1,9 +1,26 @@
-import { TemplateValue, TemplatePlaceholder } from '@udev/schema';
+import { TemplateValue, TemplatePlaceholder, Template } from '@udev/schema';
 
-export type TemplateValues = {
-  name: string;
-  [key: string]: TemplateValue;
+/**
+ * Represents the loaded configuration for a template.
+ */
+export type TemplateConfig = {
+  /**
+   * Absolute path to the template configuration file.
+   *
+   * This can also be the directory that the paths in the configuration are relative to.
+   */
+  path: string;
+
+  /**
+   * Actual configuration that can be loaded from a file.
+   */
+  template: Template;
 };
+
+/**
+ * Values that will be applied to a template.
+ */
+export type TemplateValues = Record<string, TemplateValue>;
 
 export type LoadedTemplateFile = {
   /**
@@ -22,7 +39,10 @@ export type LoadedTemplateFile = {
   data: string;
 };
 
-export type LoadedTemplatePlaceholder = Exclude<TemplatePlaceholder, string>;
+/**
+ * Placeholder value that can be used to render a template.
+ */
+export type TemplatePlaceholderObject = Exclude<TemplatePlaceholder, string>;
 
 export type LoadedTemplate = {
   /**
@@ -36,12 +56,10 @@ export type LoadedTemplate = {
   path: string;
 
   /**
-   * Placeholder values used in templates. These will be replace with values passed to the generator.
+   * Placeholder values used in templates.
+   * These will be replace with values passed to the generator.
    */
-  placeholders: {
-    name: LoadedTemplatePlaceholder;
-    [k: string]: LoadedTemplatePlaceholder;
-  };
+  placeholders: Map<string, TemplatePlaceholderObject>;
 
   /**
    * Default properties used for the generated files
@@ -54,7 +72,7 @@ export type LoadedTemplate = {
   files: LoadedTemplateFile[];
 };
 
-export type RenderedFile = {
+export type RenderedTemplateFile = {
   /**
    * Template file used to render the file.
    */
@@ -73,9 +91,14 @@ export type RenderedFile = {
 
 export type RenderedTemplate = {
   /**
+   * Loaded template that was used.
+   */
+  template: LoadedTemplate;
+
+  /**
    * Rendered files in the template.
    */
-  files: RenderedFile[];
+  files: RenderedTemplateFile[];
 
   /**
    * Values used to render the files.

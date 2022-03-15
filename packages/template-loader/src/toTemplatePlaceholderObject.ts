@@ -1,4 +1,4 @@
-import { LoadedTemplatePlaceholder } from './types';
+import { TemplatePlaceholderObject } from './types';
 import { TemplatePlaceholder } from '@udev/schema';
 import {
   camelCase as toCamelCase,
@@ -8,7 +8,15 @@ import {
   words as toWords,
 } from 'lodash';
 
-function loadTemplatePlaceholder(placeholder: TemplatePlaceholder): LoadedTemplatePlaceholder {
+/**
+ * Convert a `TemplatePlaceholder` from a configuration to
+ * a `TemplatePlaceholderObject` that can be used to render a template.
+ *
+ * @param placeholder - Value from a configuration.
+ *
+ * @returns Value that can be used to render a template.
+ */
+function toTemplatePlaceholderObject(placeholder: TemplatePlaceholder): TemplatePlaceholderObject {
   if (typeof placeholder === 'object') return placeholder;
 
   const camelCase = toCamelCase(placeholder);
@@ -28,4 +36,4 @@ function loadTemplatePlaceholder(placeholder: TemplatePlaceholder): LoadedTempla
   };
 }
 
-export default loadTemplatePlaceholder;
+export default toTemplatePlaceholderObject;
