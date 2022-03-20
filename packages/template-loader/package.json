@@ -1,7 +1,7 @@
 {
   "name": "@udev/template-loader",
   "version": "0.1.0",
-  "description": "Auto-generated @udev tool",
+  "description": "Utilties for loading and rendering template files.",
   "license": "MIT",
   "private": true,
   "main": "dist/index.js",

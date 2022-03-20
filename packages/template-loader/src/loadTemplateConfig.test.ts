@@ -20,14 +20,14 @@ describe('loadTemplateConfig', () => {
       },
     };
     readJsonSync.mockImplementation(() => config);
-    const templateConfigPath = '/hello/world/test.template.json';
+    const templateConfigPath = path.join(process.cwd(), 'test.template.json');
 
     // Act
     const result = loadTemplateConfig(templateConfigPath);
 
     // Assert
     expect(result).toEqual({
-      directory: path.join('/hello/world', config.directory),
+      directory: path.join(process.cwd(), config.directory),
       name: 'test',
       placeholders: {
         name: 'any-name',

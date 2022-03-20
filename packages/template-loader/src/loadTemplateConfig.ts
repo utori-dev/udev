@@ -12,7 +12,7 @@ import { Template } from '@udev/schema';
  */
 function loadTemplateConfig(template: string): Template {
   const { directory: relativeDirectory, ...config } = readJsonSync<Template>(template);
-  const directory = path.join(path.dirname(template), relativeDirectory);
+  const directory = path.resolve(path.dirname(template), relativeDirectory);
 
   return {
     directory,
